@@ -1,0 +1,20 @@
+<div class="mt-6">
+    <div class="border-l-4 rounded-lg" routerLinkActive=" border-l-slate-400">
+        <a [routerLink]="['/weatherconditions']">
+            <div style="height: 50px; width: 180px; padding-top: 12px;"
+                class="rounded-lg border-solid border-2 border-neutral-300 hover:bg-zinc-300 p-3">
+                <fa-icon class="text-sm mr-2" style="color:dimgray" [icon]="faCircle"></fa-icon>
+                Hava Durumu
+            </div>
+        </a>
+    </div>
+    <!-- <div class="border-l-4 rounded-lg mt-2" routerLinkActive=" border-l-slate-400">
+        <a *ngIf="user.role === 'admin'" [routerLink]="['/weatherreports']">
+            <div style="height: 70px; width: 180px; padding-top: 20px;"
+            class=" rounded-lg border-solid border-2 border-slate-400 hover:bg-zinc-300 p-3">
+                <fa-icon class="text-base mr-2" style="color:dimgray" [icon]="faCircle"></fa-icon>
+                Weather Reports
+            </div>
+        </a>
+    </div> -->
+</div>

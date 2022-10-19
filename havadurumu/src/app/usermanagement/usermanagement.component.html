@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="flex flex-row">
+    <div class="basis-1/6">
+        <app-navbar></app-navbar>
+    </div>
+    <div class="basis-11; flex flex-col" >
+            <!-- <div class="mt-5 px-4 rounded-lg bg-transparent border-solid border-2 border-slate-400" style="height: 155px; width: 1300px;"> -->
+             <div class=" mt-6 border-t-4 rounded-lg px-4 border-neutral-300">
+                <div class="mt-5"><strong><h2>KULLANICI YÖNETİMİ</h2></strong></div>
+                 <br>
+                <button class="px-4 py-3 rounded-lg bg-gray-500 text-white" style="width: 200px;" (click)="ngxSmartModalService.getModal('myModal').open()">Yeni Kullanıcı</button>
+                <ngx-smart-modal #myModal identifier="myModal">
+                        <div class="mt-3 w-full">
+                            <div class="mb-1 text-neutral-500">İsim*</div>
+                                <input  type="text" [(ngModel)]="user.userName" class="form-input rounded-lg w-full" placeholder="İsim"  />
+                        </div>
+                        <div class="mt-3 w-full">
+                            <div class="mb-1 text-neutral-500">Şifre*</div>
+                                <input type="password" [(ngModel)]="user.password" class="form-input rounded-lg w-full" placeholder="Şifre" />
+                        </div>
+                        <div class="mt-3 w-full">
+                            <div class="mb-1 text-neutral-500">ŞifreTekrar*</div>
+                                <input type="password" [(ngModel)]="password2" class="form-input rounded-lg w-full" placeholder="ŞifreTekrar" />
+                        </div>
+                        <div class="mt-4">
+                            <div class="mb-1 text-neutral-500">Rol*</div>
+                            <select [(ngModel)]="selectedRole" class="rounded-lg" name="city" id="city" style="width:100px; height: 40px;">
+                                <option *ngFor="let item of roles; let i = index">{{item.role}}</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button (click)="fncRegister()" class="mt-3 px-40 py-1 rounded-lg bg-gray-500 text-white" type="submit">Ekle</button>
+                        </div>
+                </ngx-smart-modal>
+            </div>
+        <!-- <div class="mt-5 px-4 rounded-lg bg-transparent border-solid border-2 border-slate-400 h-screen" style="width: 1300px;"> -->
+        <div class=" mt-6 border-t-4 rounded-lg px-4 border-neutral-300">
+            <div class="mt-5"><h4>Kullanıcı Listesi</h4></div>
+            <div class="bg-transparent" style="height:60px; width: 1265px">
+                <input [(ngModel)]="search" (keyup)="fncSearch()" type="search" class="form-input rounded-lg mt-2" placeholder="Kullanıcı Ara" />
+            </div>
+            <div style="height: 300px;">
+                <div class="py-1 inline-block min-w-full sm:px-6 lg:px-0" >
+                    <table class="min-w-full bg-transparent">
+                        <thead class="border-b">
+                            <tr>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                İsim
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                Rol
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                Aksiyon
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b" *ngFor="let item of allUser; let i = index" >
+                                <td style="text-transform:capitalize" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{item.userName}}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{{item.role}}</td>
+                                <td class="px-6 py-4">
+                                    <button  (click)="fncRemove(item.id)" class="text-black p-1 rounded ml-4">Sil</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
